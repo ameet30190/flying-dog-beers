@@ -47,17 +47,25 @@ server = app.server
 app.title=tabtitle
 
 ########### Set up the layout
-app.layout = html.Div(children=[
-    html.H1(myheading),
-    dcc.Graph(
-        id='flyingdog',
-        figure=beer_fig
-    ),
-    html.A('Code on Github', href=githublink),
-    html.Br(),
-    html.A('Data Source', href=sourceurl),
-    ]
-)
+app.layout=html.Div([
+    # dcc.Store(id='store_financials'),
+    # dcc.Store(id='store_customers'),
+    dcc.Dropdown(id='centres',
+                 options=[],
+                 value=[],#'P059-OIL STF MADHUBAN',
+                 multi=True,
+                 placeholder="Project name"),
+    dcc.Tabs(id='tabs',
+              # value='materialtab',
+             children=[
+                 dcc.Tab(label='Financials',value='financetab'),
+                
+                 dcc.Tab(label='Customers',value='customertab'),
+                 dcc.Tab(label='Vendors',value='vendortab'),
+                 dcc.Tab(label='Materials',value='materialtab'),
+                 dcc.Tab(label='Documents',value='documenttab'),
+                 dcc.Tab(label='Search',value='searchtab')]),
+    html.Div(id='content',children=z)])
 
 if __name__ == '__main__':
     app.run_server()
