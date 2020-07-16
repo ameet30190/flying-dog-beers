@@ -271,21 +271,21 @@ app.layout=html.Div([dcc.Dropdown(id='years',
             style={'width':'100%','border':'2px blue solid'})],
             style={'width':'100%'})])
 
-# @app.callback(Output('f-data','children'),
-#               [Input('years','value')])
-# def update_data(value):
+@app.callback(Output('f-data','children'),
+              [Input('years','value')])
+def update_data(value):
 
-#      v=[]
-#      if type(value)==str:
-#          v=[value]
-#      else:
-#          for val in value:
-#              v.append(val)
-#      data=pd.read_pickle(r'sugardata1.pkl')
-#      data1=data[data['Financial Year'].isin(v)]
-#      pivot1=pd.pivot_table(data1,index=['Financial Year','GL Type','Schedule','Account Name'],values=['Amount'],aggfunc=np.sum).reset_index()
-#      final={'pivot1':pivot1.to_json(orient='split',date_format='iso')}
-#      return json.dumps(final)
+      v=[]
+      if type(value)==str:
+          v=[value]
+      else:
+          for val in value:
+              v.append(val)
+      data=pd.read_pickle(r'sugardata1.pkl')
+      data1=data[data['Financial Year'].isin(v)]
+      pivot1=pd.pivot_table(data1,index=['Financial Year','GL Type','Schedule','Account Name'],values=['Amount'],aggfunc=np.sum).reset_index()
+      final={'pivot1':pivot1.to_json(orient='split',date_format='iso')}
+      return json.dumps(final)
 
 # @app.callback(Output('f-filtercol0','options'),
 #               [Input('f-data','children')])#,
