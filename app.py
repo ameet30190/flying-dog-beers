@@ -34,9 +34,10 @@ from plotly.offline import plot
 import plotly.express as px
 from plotly.subplots import make_subplots
 import sqlite3
+import os
+os.chdir('flying-dog-beers')
 
-
-colors=pd.read_excel('https://github.com/ameet30190/flying-dog-beers/blob/master/Plotly%20colours.xlsx?raw=true')
+colors=pd.read_excel(r'Plotly colours.xlsx')
 
 def plot_stack(df,x_axis_col,y_axis_col,stacks_col,*hovercol):
     if x_axis_col is None or stacks_col is None:
@@ -280,7 +281,7 @@ def update_data(value):
      else:
          for val in value:
              v.append(val)
-     data=pd.read_pickle('https://github.com/ameet30190/flying-dog-beers/blob/master/sugardata1.pkl?raw=true')
+     data=pd.read_pickle(r'sugardata1.pkl')
      data1=data[data['Financial Year'].isin(v)]
      pivot1=pd.pivot_table(data1,index=['Financial Year','GL Type','Schedule','Account Name'],values=['Amount'],aggfunc=np.sum).reset_index()
      final={'pivot1':pivot1.to_json(orient='split',date_format='iso')}
@@ -479,7 +480,7 @@ def update_figure(value):
 def update_figure(value):
     b=json.loads(value)
     # data=pd.read_json(b['pivot1'],orient='split')
-    data=pd.read_pickle('https://github.com/ameet30190/flying-dog-beers/blob/master/sugardata1.pkl?raw=true')
+    data=pd.read_pickle(r'sugardata1.pkl')
     if data.empty:
         options=[]
     else:
@@ -495,7 +496,7 @@ def update_figure(value):
 def update_figure(value):
     b=json.loads(value)
     # data=pd.read_json(b['pivot1'],orient='split')
-    data=pd.read_pickle('https://github.com/ameet30190/flying-dog-beers/blob/master/sugardata1.pkl?raw=true')
+    data=pd.read_pickle(r'sugardata1.pkl')
     if data.empty:
         options=[]
     else:
@@ -565,7 +566,7 @@ def update_figure(value):
 def update_figure(value,xaxis,stacks,filtercol1,filterval1,glname,year):#,filtercol2,filterval2,filtercol3,filterval3):
     b=json.loads(value)
     # data=pd.read_json(b['pivot1'],orient='split')
-    data=pd.read_pickle('https://github.com/ameet30190/flying-dog-beers/blob/master/sugardata1.pkl?raw=true')
+    data=pd.read_pickle(r'sugardata1.pkl')
     p=[]
     if type(year)==str:
         p=[year]
@@ -634,7 +635,7 @@ def update_figure(value,xaxis,stacks,filtercol1,filterval1,glname,year):#,filter
 def update_figure(value,xaxis,stacks,filtercol1,filterval1,glname,year):#,filtercol2,filterval2,filtercol3,filterval3):
     b=json.loads(value)
     # data=pd.read_json(b['pivot1'],orient='split')
-    data=pd.read_pickle('https://github.com/ameet30190/flying-dog-beers/blob/master/sugardata1.pkl?raw=true')
+    data=pd.read_pickle(r'sugardata1.pkl')
     # data['Account Name'].unique()
     # glname='AUTADE SUGARS PVT LTD'
     p=[]
