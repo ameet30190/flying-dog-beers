@@ -287,19 +287,19 @@ def update_data(value):
       final={'pivot1':pivot1.to_json(orient='split',date_format='iso')}
       return json.dumps(final)
 
-# @app.callback(Output('f-filtercol0','options'),
-#               [Input('f-data','children')])#,
-#               # Input('years','value')])
-# def update_figure(value):
-#     b=json.loads(value)
-#     data=pd.read_json(b['pivot1'],orient='split')
-#     # data=pd.read_pickle(r'C:\Users\arupnar.mim2013\AnacondaProjects\sugardata1.pkl')
+@app.callback(Output('f-filtercol0','options'),
+              [Input('f-data','children')])#,
+              # Input('years','value')])
+def update_figure(value):
+    b=json.loads(value)
+    data=pd.read_json(b['pivot1'],orient='split')
+    # data=pd.read_pickle(r'C:\Users\arupnar.mim2013\AnacondaProjects\sugardata1.pkl')
     
-#     if data.empty:
-#         options=[]
-#     else:
-#         options=[{'label':i,'value':i} for i in data.columns]
-#     return options
+    if data.empty:
+        options=[]
+    else:
+        options=[{'label':i,'value':i} for i in data.columns]
+    return options
 
 # @app.callback(Output('f-filterval0','options'),
 #               [Input('f-data','children'),
