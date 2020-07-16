@@ -9,6 +9,7 @@ import plotly.graph_objs as go
 external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 server = app.server
+app.title='Fabtech Sugar'
 
 
 ########### Set up the layout
@@ -37,7 +38,7 @@ import sqlite3
 # import os
 # os.chdir('flying-dog-beers')
 
-colors=pd.read_excel(r'Plotlycolours.xlsx')
+colors=pd.read_csv(r'Plotlycolours.csv')
 
 def plot_stack(df,x_axis_col,y_axis_col,stacks_col,*hovercol):
     if x_axis_col is None or stacks_col is None:
