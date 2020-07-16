@@ -37,7 +37,7 @@ import sqlite3
 # import os
 # os.chdir('flying-dog-beers')
 
-# colors=pd.read_excel(r'Plotly colours.xlsx')
+colors=pd.read_excel(r'Plotly colours.xlsx')
 
 def plot_stack(df,x_axis_col,y_axis_col,stacks_col,*hovercol):
     if x_axis_col is None or stacks_col is None:
@@ -78,7 +78,7 @@ def plot_stack(df,x_axis_col,y_axis_col,stacks_col,*hovercol):
             # i=131
             x=i-115*(math.floor(i/115))
             
-            fig1=go.Bar(y=b[y_axis_col],x=b[x_axis_col],hovertext=b[hover_col],hoverinfo='x+y+text',name=v+" ("+str("{:,.2f}".format(q))+"M)",showlegend=True)#,marker_color=colors.loc[x,'Colour'])
+            fig1=go.Bar(y=b[y_axis_col],x=b[x_axis_col],hovertext=b[hover_col],hoverinfo='x+y+text',name=v+" ("+str("{:,.2f}".format(q))+"M)",showlegend=True,marker_color=colors.loc[x,'Colour'])
             
             fig.add_trace(fig1)
         fig.update_layout(hovermode='x',barmode='relative',title='Total : '+str("{:,.2f}".format(j))+'/-')
