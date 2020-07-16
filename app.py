@@ -34,8 +34,8 @@ from plotly.offline import plot
 import plotly.express as px
 from plotly.subplots import make_subplots
 import sqlite3
-import os
-os.chdir('flying-dog-beers')
+# import os
+# os.chdir('flying-dog-beers')
 
 # colors=pd.read_excel(r'Plotly colours.xlsx')
 
