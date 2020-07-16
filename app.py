@@ -37,7 +37,7 @@ import sqlite3
 # import os
 # os.chdir('flying-dog-beers')
 
-colors=pd.read_excel(r'Plotly colours.xlsx')
+colors=pd.read_excel(r'Plotlycolours.xlsx')
 
 def plot_stack(df,x_axis_col,y_axis_col,stacks_col,*hovercol):
     if x_axis_col is None or stacks_col is None:
